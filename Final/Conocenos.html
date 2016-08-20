@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Conocenos</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="header.js" ></script>
+</head>
+<body> 
+<header>
+    <div class="wrapper">
+  <div class="logo"> 
+  <a href="index.html"><img src="logo.png">
+    <nav>
+    <a href="index.html">Inicio</a>
+    <a href="productos.php">Productos</a>
+    <a href="Conocenos.html">Conocenos</a>
+    <a href="registro.php">Registro</a>
+    </nav>
+    </div>
+    </div>
+</header>  
+
+    <div id="titulo">    
+    <h1>Ubica tu tienda mas cercana<h1>  
+      
+
+      </div> 
+      
+      
+     <div id="map"></div>
+    <script>       
+        
+        function initMap() {
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: {lat: 19.4161356, lng: -99.1618396}
+          });
+
+          setMarkers(map);
+        }
+        
+        var beaches = [
+          ['Bondi Beach', 19.4201342, -99.1502906, 2],
+          ['Coogee Beach', 19.4133732, -99.1646827, 3],
+          ['Cronulla Beach', 19.4137736,-99.1609426, 1],
+          
+        ];
+
+        function setMarkers(map) {
+          
+          var image = {
+            url: 'images/beachflag.png',
+            
+            size: new google.maps.Size(20, 32),
+            
+            origin: new google.maps.Point(0, 0),
+            
+            anchor: new google.maps.Point(0, 32)
+          };
+          
+          var shape = {
+            coords: [1, 1, 1, 20, 18, 20, 18, 1],
+            type: 'poly'
+          };
+          
+          for (var i = 0; i < beaches.length; i++) {
+            var beach = beaches[i];
+            var marker = new google.maps.Marker({
+              position: {lat: beach[1], lng: beach[2]},
+              map: map,
+              //icon: image,
+              //shape: shape,
+              title: beach[0],
+              zIndex: beach[3]
+            });
+          }
+        }
+ 
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt3ZM3S63MvRRJoIk_vKtE0NZaS5A6b9U&signed_in=true&callback=initMap"></script>
+ 
+<footer>
+<a href="index.html"><img src="icono.png">
+PRODUCTO PARA MAYORES DE 21 AÑOS. POR FAVOR BEBE RESPONSABLEMENTE. CUANDO TOMES, NO MANEJES</footer>
+</body>
+</html>
